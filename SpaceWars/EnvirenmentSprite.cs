@@ -9,13 +9,13 @@ namespace SpaceWars
 
         protected EnvirenmentSprite(Control container): base(container)
         {
-            Container = container;
+            
 
             GoToStart();
-            SpeedX = -random.Next(5, 20);
+            SpeedX = -random.Next(15, 40);
         }
 
-        public Control Container { get; }
+        
 
         public override void Move()
         {

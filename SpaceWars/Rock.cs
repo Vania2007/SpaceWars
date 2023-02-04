@@ -20,8 +20,7 @@ namespace SpaceWars
                 game.Ship.Pb.Image = Resources.CrashedShip;
                 game.Over();
             }
-
-            else if (another is Rocket)
+            if (another is Rocket)
             {
                 game.ScoreUp();
                 GoToStart();

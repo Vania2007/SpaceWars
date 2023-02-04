@@ -13,6 +13,12 @@ namespace SpaceWars
     public partial class Form1 : Form
     {
         Game game;
+        Dictionary<Keys, GameActions> keys = new Dictionary<Keys, GameActions>()
+        {
+            [Keys.W] = GameActions.Up,
+            [Keys.S] = GameActions.Down,
+            [Keys.Space] = GameActions.Shoot
+        };
         public Form1()
         {
             InitializeComponent();
@@ -29,12 +35,8 @@ namespace SpaceWars
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.W)
-                game.Ship.AccelerateUp();
-            if (e.KeyCode == Keys.S)
-                game.Ship.AccelerateDown();
-            if (e.KeyCode == Keys.Space)
-                game.Rocket. // Accelerate(); - не висвічується
+            if (!keys.ContainsKey(e.KeyCode)) return;
+            game.Manage(keys[e.KeyCode]);
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)

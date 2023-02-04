@@ -17,6 +17,7 @@ namespace SpaceWars
         public PictureBox Pb { get; }
         public int SpeedX { get; set; }
         public int SpeedY { get; set; }
+        public Control Container { get => Pb.Parent; }
         public virtual void Move() 
         {
             Pb.Left += SpeedX;
@@ -26,7 +27,7 @@ namespace SpaceWars
         public bool IsCollide(Sprite another)
         {
             if (another == null || another == this) return false;
-            Rectangle r1 = new Rectangle(Pb.Location, Pb.Size);
+            Rectangle r1 = new Rectangle(Pb.Location, Pb.Size * 8 / 10);
             Rectangle r2 = new Rectangle(another.Pb.Location, another.Pb.Size);
             return r1.IntersectsWith(r2);
         }
